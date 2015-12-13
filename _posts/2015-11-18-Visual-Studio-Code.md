@@ -8,7 +8,7 @@ publish: true
 ---
 
 
-Visual Studio Code is cross-platform source code editor from Microsoft, use for `Windows`, `linux` and `OS X`. It includes support for `debugging`, embedded `Git Control`, intelligent code completion (also known as `IntelliSense`), and other features. It is also customizable, so users can change the editor's theme, change the editor's keyboard shortcuts, change the editor's preferences, and others. It is not yet known if users can extend the editor by developing extensions like in `Visual Studio`.
+Visual Studio Code is cross-platform source code editor from Microsoft, use for `Windows`, `Linux` and `OS X`. It includes support for `debugging`, embedded `Git Control`, intelligent code completion (also known as `IntelliSense`), and other features. It is also customizable, so users can change the editor's theme, change the editor's keyboard shortcuts, change the editor's preferences, and others. It is not yet known if users can extend the editor by developing extensions like in `Visual Studio`.
 
 ## Visual Studio Code Installation
 
