@@ -25,3 +25,5 @@ Extensions or themes in Visual Studio Code are easy to install, Extension Contro
 1. Connect to [Extension Visual Studio Code Marketplace](https://marketplace.visualstudio.com/#VSCode).
 	
 2. The marketplace are acutally look like the image below. <img src="/images/2015-11-18/vscode-market.png" style="margin: 0 auto; width: 688px;" />
+
+3. 
