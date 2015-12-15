@@ -11,6 +11,6 @@ Worse Microsoft Development Team Members for Visual Studio Code, @egamma, when h
 <img src="/images/2015-12-16/egamma.jpg" style="margin: 0 auto; width: 300px;" />
 
 And the image below show that @egamma deleted all the user comment just because he can't even answer a simply question by redirect the question to another channel or aka another forum.
-<img src="/images/2015-12-16/egamma-post.jpg" style="margin: 0 auto; width: 752px;" />
+<img src="/images/2015-12-16/egamma-post.png" style="margin: 0 auto; width: 752px;" />
 
 And you can see all the comment that he deleted from [here](https://github.com/Microsoft/vscode/issues/1206#issuecomment-164459110).
