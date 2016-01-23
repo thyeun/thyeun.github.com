@@ -8,3 +8,8 @@
 
 	// Whether auto fetching is enabled.
 	"git.autofetch": true,
+    
+    //-------- Markdown preview configuration --------
+
+	// A list of URLs or local paths to CSS style sheets to use from the markdown preview.
+	"markdown.styles": [],
