@@ -9,16 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Yeun's Studios{% if page.title %} | {{ page.title }}{% endif %}</title>
   {% if page.url contains 'jobs' %}
+  <link rel="canonical" href="{{ site.home_url }}{{ page.url }}">
   <meta property="og:title" content="Automation Software design and Integration.">
   <meta property="og:type" content="blog">
-  <meta property="og:url" content="http://thyeun.github.io{{ page.url }}">
+  <meta property="og:url" content="{{ site.home_url }}{{ page.url }}">
   <meta property="og:site_name" content="Yeun's Software Blog">
   <meta property="og:description" content="Machine Control and Vision System Integration.">
   {% elsif page.title %}
   {% assign base_path = '../../..' %}
+  <link rel="canonical" href="{{ site.home_url }}{{ page.url }}">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="http://thyeun.github.io{{ page.url }}">
+  <meta property="og:url" content="{{ site.home_url }}{{ page.url }}">
   <meta property="og:site_name" content="Yeun's Software Blog">
   <meta property="og:description" content="{{ page.description }}">
   {% else %}
@@ -27,6 +29,7 @@
   {% else %}
     {% assign base_path = '..' %}
   {% endif %}
+  <link rel="canonical" href="{{ site.home_url }}/">
   <meta property="og:title" content="Yeun's Software Blog">
   <meta property="og:type" content="blog">
   <meta property="og:url" content="{{ site.home_url }}">
