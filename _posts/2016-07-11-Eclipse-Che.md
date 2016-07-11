@@ -13,4 +13,4 @@ The workspace server comes with a RESTful webservice and provides high flexibili
 The main difference between Eclipse Che and the standard Eclipse IDE is its ability to create Docker containers to execute applications.
 
 Below are the workflow of Eclipse Che
-<img src="/images/2016-07-11/Eclipse_Che_-_Workflow.png" style="margin: 0 auto; width: 688px;" />
+<img src="/images/2016-07-11/Eclipse_Che_-_Workflow.PNG" style="margin: 0 auto; width: 688px;" />
