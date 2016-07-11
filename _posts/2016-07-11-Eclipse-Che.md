@@ -1,6 +1,6 @@
 ---
 layout: entry
-title: Eclipse Che | Next-Generation Eclipse IDE
+title: Eclipse Che
 author: Thomas Yeun
 author-email: thyeun@gmail.com
 description: Eclipse Che 
