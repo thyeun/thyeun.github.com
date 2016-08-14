@@ -4,7 +4,7 @@ title: Eclipse Che
 author: Thomas Yeun
 author-email: thyeun@gmail.com
 description: Eclipse Che 
-publish: true
+publish: false
 ---
 
 
