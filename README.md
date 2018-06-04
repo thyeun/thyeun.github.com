@@ -1,4 +1,4 @@
-# Yeun's Studios
+# Yeun's Studios Blog
 
 ## Requirements (for testing)
 
