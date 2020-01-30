@@ -205,6 +205,21 @@ blockquote p {
   color: #888;
   width: 29em !important; }
 
+  #image-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    width: 50em; }
+  
+  #image-wrapper img {
+    display: block;
+    margin-top: 3.750em;
+    margin-bottom: 3.750em;
+    width: 40em !important;
+    margin-left: auto !important;
+    margin-right: auto !important; }
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
   @viewport {
     width: device-width; }
