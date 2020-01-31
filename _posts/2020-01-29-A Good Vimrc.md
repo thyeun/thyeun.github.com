@@ -24,10 +24,10 @@ With that said, the rest of this article will be me explaining each and every li
 I will break it up into logical sections.
 
 + [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
-+ [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces)
-+ [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#ui)
-+ [Searching](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#search)
-+ [Folding](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#fold)
++ [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces&tabs)
++ [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#uiconfig)
++ [Searching](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
++ [Folding](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
 + Custom Movements
 + Custom Leader
 + CtrlP Settings
