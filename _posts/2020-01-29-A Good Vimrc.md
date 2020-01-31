@@ -128,10 +128,10 @@ set hlsearch            " highlight matches
 These should be pretty self explanatory. They make searching better.
 
 <pre><code>" turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap < leader >< space > :nohlsearch< CR >
 </code></pre>
 
-Vim will keep highlighted matches from searches until you either run a new one or manually stop highlighting the old search with `:nohlsearch`. I find myself running this all the time so I've mapped it to ,`<space>`.
+Vim will keep highlighted matches from searches until you either run a new one or manually stop highlighting the old search with `:nohlsearch`. I find myself running this all the time so I've mapped it to `,<space>`.
 
 ## Folding
 
