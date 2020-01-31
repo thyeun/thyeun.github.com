@@ -30,14 +30,14 @@ I will break it up into logical sections.
 + [Folding](#fold)
 + [Custom Movements](#move)
 + [Custom Leader](#lead)
-+ CtrlP Settings
-+ Launch Config
-+ Tmux Config
-+ Autogroups
-+ Backups
-+ Custom Functions
-+ Organization
-+ Wrapping It Up
++ [CtrlP Settings](#ctrlp)
++ [Launch Config](#launch)
++ [Tmux Config](#tmux)
++ [Autogroups](#auto)
++ [Backups](#backup)
++ [Custom Functions](#funct)
++ [Organization](#organ)
++ [Wrapping It Up](#wrap)
 
 This article will almost certainly fall out of date with my vimrc in the very near future. You can find the most up to date version of it on [github](https://github.com/thyeun/dotfiles/blob/master/.vimrc).
 
@@ -163,7 +163,7 @@ I change the mapping of `<space>` pretty frequently, but this is its current com
 
 This tells Vim to fold based on indentation. This is especially useful for me since I spend my days in Python. Other acceptable values are `marker`, `manual`, `expr`, `syntax`, `diff`. Run `:help foldmethod` to find out what each of those do.
 
-## Movement [#move]
+## Movement {#move}
 
 Here we start getting into custom bindings. This group of bindings all relate to movement commands.
 
@@ -197,4 +197,218 @@ Here we've reached the meat of my custom keybindings. This section will introduc
 
 <pre><code>let mapleader=","       " leader is comma
 </code></pre>
+
+`\` is a little far away for a leader. I've found `,` to be a much better replacement.
+
+<pre><code>" jk is escape
+inoremap jk < esc >
+</code></pre>
+
+`<ESC>` is very far away. `jk` is a much better replacement as it's on the home row and I actually never type it when writing text. Except right now when I wrote this section of this post. Which I'm writing in Vim. The workaround if you ever need to enter this rare sequence of keys is to enter the `j`, wait for the leader-check timeout to fade, and then enter the `k`.
+
+<pre><code>" toggle gundo
+nnoremap < leader >u :GundoToggle< CR >
+</code></pre>
+
+In one of its cleverest innovations, Vim doesn't model undo as a simple stack. In Vim it's a tree. This makes sure you never lose an action in Vim, but also makes it much more difficult to traverse around that tree. [gundo.vim](https://github.com/sjl/gundo.vim) fixes this by displaying that undo tree in graphical form. Get it and don't look back. Here I've mapped it to `,u`, which I like to think of as "super undo".
+
+<pre><code>" edit vimrc/zshrc and load vimrc bindings
+nnoremap < leader >ev :vsp $MYVIMRC< CR >
+nnoremap < leader >ez :vsp ~/.zshrc< CR >
+nnoremap < leader >sv :source $MYVIMRC< CR >
+</code></pre>
+
+These are shortcuts to edit and source my vimrc and my zshrc. That's it.
+
+<pre><code>" save session
+nnoremap < leader >s :mksession< CR >
+</code></pre>
+
+Ever wanted to save a given assortment of windows so that they're there next time you open up Vim? `:mksession` does just that! After saving a Vim session, you can reopen it with `vim -S`. Here I've mapped it to `,s`, which I remember by thinking of it as "super save".
+
+<pre><code>" open ag.vim
+nnoremap < leader >a :Ag
+</code></pre>
+
+[The Silver Searcher](https://github.com/ggreer/the_silver_searcher) is a fantastic command line tool to search source code in a project. It's wicked fast. The command line tool is named `ag` (like the element silver). Thankfully there is a wonderful Vim plugin [ag.vim](https://github.com/rking/ag.vim) which lets you use `ag` without leaving Vim and pulls the results into a quickfix window for easily jumping to the matches. Here I've mapped it to `,a`.
+
+## CtrlP {#ctrlp}
+
+[ctrlp.vim](https://github.com/kien/ctrlp.vim) is my life in Vim. If you've never used a fuzzy file searcher this will open your eyes. If you're currently using [commandt.vim](https://github.com/wincent/Command-T), you're on the right track, but CtrlP is the spiritual successor. It's *can be* (see below) significantly faster and more configurable than CommandT (Thanks [Reddit!](https://www.reddit.com/r/vim/comments/1vt4dg/a_good_vimrc/)). Anyways here are my settings for CtrlP.
+
+<pre><code>" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+</code></pre>
+
+There are a few things happening here. The first is I'm telling CtrlP to order matching files top to bottom with `ttb`. Next, we tell CtrlP to always open files in new buffers with `let ctrlp_switch_buffer=0`. Setting `let g:ctrlp_working_path=0` lets us change the working directory during a Vim session and make CtrlP respect that change.
+
+Now, let's talk about speed. CtrlP is entirely written in Vimscript, (which is pretty impressive) but CommandT has parts that are written in C. This means CommandT is, by default, faster than CtrlP. However, we can tell CtrlP to run an external command to find matching files. Now that we have `ag` installed, we can use it with CtrlP to make CtrlP wicked fast.. We do that with the following.
+
+<pre><code>let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+</code></pre>
+
+If everything works out, you should see a noticeable improvement in the CtrlP speed. There are two caveats to this. Both `g:ctrlp_show_hidden` and `g:ctrlp_custom_ignore` do not work with custom user commands. I only care about the lack of support for custom ignores. Thankfully, `ag` has it's own convention for ignore files: a `.agignore` file that follows the same conventions as `.gitignore`. This is actually great! We only need to define our directories to ignore when searching in one place.
+
+## Launch Config {#launch}
+
+These are options set at launch to configure external tools exactly once.
+
+<pre><code>call pathogen#infect()                      " use pathogen
+call pathogen#runtime_append_all_bundles()  " use pathogen
+</code></pre>
+
+The `pathogen` options extract all of the Vim plugins from their location in `~/.vim/bundles` to their respective places in the `~/.vim` folder.
+
+## Tmux {#tmux}
+
+<pre><code>" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\< Esc >Ptmux;\< Esc >\< Esc >]50;CursorShape=1\x7\< Esc >\\"
+    let &t_EI = "\< Esc >Ptmux;\< Esc >\< Esc >]50;CursorShape=0\x7\< Esc >\\"
+else
+    let &t_SI = "\< Esc >]50;CursorShape=1\x7"
+    let &t_EI = "\< Esc >]50;CursorShape=0\x7"
+endif
+</code></pre>
+
+These lines change the cursor from block cursor mode to vertical bar cursor mode when using tmux. Without these lines, tmux always uses block cursor mode.
+
+## Autogroups {#auto}
+
+<pre><code>augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
+                \:call < SID >StripTrailingWhitespaces()
+    autocmd FileType java setlocal noexpandtab
+    autocmd FileType java setlocal list
+    autocmd FileType java setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType java setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType php setlocal expandtab
+    autocmd FileType php setlocal list
+    autocmd FileType php setlocal listchars=tab:+\ ,eol:-
+    autocmd FileType php setlocal formatprg=par\ -w80\ -T4
+    autocmd FileType ruby setlocal tabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal commentstring=#\ %s
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter *.cls setlocal filetype=java
+    autocmd BufEnter *.zsh-theme setlocal filetype=zsh
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+augroup END
+</code></pre>
+
+This is a slew of commands that create language-specific settings for certain filetypes/file extensions. It is important to note they are wrapped in an `augroup` as this ensures the `autocmd`'s are only applied once. In addition, the `autocmd!` directive clears all the `autocmd`'s for the current group.
+
+## Backups {backup}
+
+If you leave a Vim process open in which you've changed file, Vim creates a "backup" file. Then, when you open the file from a different Vim session, Vim knows to complain at you for trying to edit a file that is already being edited. The "backup" file is created by appending a ~ to the end of the file in the current directory. This can get quite annoying when browsing around a directory, so I applied the following settings to move backups to the /tmp folder.
+
+<pre><code>set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+</code></pre>
+
+`backup` and `writebackup` enable backup support. As annoying as this can be, it is much better than losing tons of work in an edited-but-not-written file.
+
+## Custom Functions {#func}
+
+I've written a small number of custom functions. Here they are with comments explaining their purpose.
+
+<pre><code>" toggle between number and relativenumber
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
+" strips trailing whitespace at the end of files. this
+" is called on buffer write in the autogroup above.
+function! < SID >StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+</code></pre>
+
+## Organization {#organ}
+
+Once your vimrc starts to fill up, organization becomes an issue. I've grouped this article by logical sections. Not surprisingly,it makes sense to group my actual vimrc by the exact same logical sections. Even cooler, Vim will let us fold all of those sections up by default. So when you open your Vimrc you have a high level view like this:
+
+<pre><code>" Doug Black
++--  5 lines: " Colors -------------------------------------
++--  5 lines: " Misc ---------------------------------------
++--  9 lines: " Spaces & Tabs ------------------------------
++--  8 lines: " UI Layout ----------------------------------
++--  5 lines: " Searching ----------------------------------
++--  8 lines: " Folding ------------------------------------
++--  9 lines: " Line Shortcuts -----------------------------
++-- 21 lines: " Leader Shortcuts ---------------------------
++--  7 lines: " Powerline ----------------------------------
++--  6 lines: " CtrlP --------------------------------------
++--  3 lines: " NERDTree -----------------------------------
++--  4 lines: " Syntastic ----------------------------------
++--  6 lines: " Launch Config ------------------------------
++--  9 lines: " Tmux ---------------------------------------
++--  4 lines: " MacVim -------------------------------------
++-- 25 lines: " AutoGroups ---------------------------------
++--  7 lines: " Backups ------------------------------------
++-- 50 lines: " Custom Functions ---------------------------
+</code></pre>
+
+Here's how we make that happen. First, we tell vim to fold sections by *markers*, rather than *indentation*. That looks like this
+
+<pre><code>foldmethod=marker
+</code></pre>
+
+Then we want it to close every fold by default so that we have this high level view when we open our vimrc.
+
+<pre><code>foldlevel=0
+</code></pre>
+
+Now, this is a file-specific setting, so we can use a `modeline` to make Vim only use these settings for *this* file. Modelines are special comments somewhere in a file that can can declare certain Vim settings to be used only for that file. So we'll tell Vim to check just the final line of the file for a modeline.
+
+<pre><code>set modelines=1
+</code></pre>
+
+Next, we'll add our modeline to the bottom of the file.
+
+<pre><code>" vim:foldmethod=marker:foldlevel=0
+</code></pre>
+
+Finally, we need to visually wrap each section in the fold marker. The fold markers are `{{{` and `}}}`.That looks like this.
+
+<pre><code>" Section Name {{{
+set number "This will be folded
+" }}}
+</code></pre>
+
+That's it. I find this a great way to keep your vimrc highly structured, easy to navigate, and incredibly readable.
+
+## Wrapping It Up {#warp}
+
+I hope this helped you. The reality is that this was a ton of stuff and I still stand by this platitude:
+
+<pre><code>Don't put anything in your .vimrc you don't understand!
+</code></pre>
+
+So, if you grab lines from this, make sure you add comments explaining exactly what is going on. If you can't, `:help [setting]` is your best friend.
+
+Thanks for reading! Don't forget to send me your .vimrc tips at [@thyeun](https://twitter.com/thyeun).
 
