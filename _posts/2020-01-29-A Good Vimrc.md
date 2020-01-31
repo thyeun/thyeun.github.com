@@ -23,7 +23,7 @@ With that said, the rest of this article will be me explaining each and every li
 
 I will break it up into logical sections.
 
-+ [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#Colors)
++ [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
 + Spaces And Tabs
 + UI Config
 + Searching
