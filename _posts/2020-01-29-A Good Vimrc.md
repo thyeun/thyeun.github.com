@@ -23,6 +23,22 @@ With that said, the rest of this article will be me explaining each and every li
 
 I will break it up into logical sections.
 
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#colors">Colors</a></li>
+<li><a href="http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces">Spaces And Tabs</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#ui">UI Config</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#search">Searching</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#fold">Folding</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#movement">Custom Movements</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#leader">Custom Leader</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#ctrlp-section">CtrlP Settings</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#launch">Launch Config</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#tmux">Tmux Config</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#autogroup">Autogroups</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#backup">Backups</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#functions">Custom Functions</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#organization">Organization</a></li>
+<li><a href="https://dougblack.io/words/a-good-vimrc.html#wrap">Wrapping It Up</a></li>
+
 + [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
 + [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#tabs)
 + [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#config)
