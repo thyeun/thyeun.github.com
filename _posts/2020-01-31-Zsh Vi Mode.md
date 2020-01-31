@@ -21,10 +21,9 @@ But do you vi while you zsh?
 When you type characters at your zsh prompt you're engaging the zsh line editing module, often abbreviated zle. The zle module lets you do fancy things like delete the entire line you're working on and move by words instead of individual characters. The zle module operates in two modes:
 
 <pre><code>
-{
    # Emacs mode
    bindkey -e
 
    # Vi mode
    bindkey -v
-}</code></pre>
+</code></pre>
