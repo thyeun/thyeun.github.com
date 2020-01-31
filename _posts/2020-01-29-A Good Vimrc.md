@@ -23,7 +23,7 @@ With that said, the rest of this article will be me explaining each and every li
 
 I will break it up into logical sections.
 
-+ Colors
++ [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#Colors)
 + Spaces And Tabs
 + UI Config
 + Searching
@@ -42,3 +42,10 @@ I will break it up into logical sections.
 This article will almost certainly fall out of date with my vimrc in the very near future. You can find the most up to date version of it on github.
 
 ## Colors
+
+<pre><code>colorscheme badwolf         " awesome colorscheme
+</code></pre>
+
+Colors! Colorschemes are subjective, but I've currently settled on [badwolf by Steve Losh](https://github.com/sjl/badwolf/). I found [solarized](https://github.com/altercation/Vim-colors-solarized.git) incredibly complete, but a little too bland for my taste. I enjoy colors that pop. I also spend a good deal of time with [molokai](https://github.com/tomasr/molokai.git) and still think it's a great scheme, but simply prefer badwolf at the moment.
+
+Moving on:
