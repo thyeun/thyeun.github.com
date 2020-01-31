@@ -66,6 +66,7 @@ The second is `zle-keymap-select`. Per the zsh documentation:
 i.e. the special parameter KEYMAP is set to a different value, while the line editor is active. 
 Initialising the keymap when the line editor starts does not cause the widget to be called. 
 This can be used for detecting switches between the vi command (vicmd) and insert (usually main) keymaps.
+
 </code></pre>
 
 Sounds perfect, if we can modify the code run during these two events, we have found the hooks we need to modify our prompt depending on which mode we're in!
