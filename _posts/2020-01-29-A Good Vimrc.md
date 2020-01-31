@@ -24,7 +24,7 @@ With that said, the rest of this article will be me explaining each and every li
 I will break it up into logical sections.
 
 + [Colors](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
-+ [Spaces And Tabs](#Spaces-And-Tabs)
++ [Spaces And Tabs](#spaces)
 + [UI Config](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#ui)
 + [Searching](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
 + [Folding](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
@@ -57,7 +57,7 @@ The comment should be enough to describe this one. I'll take this moment to plug
 
 Also, many settings in Vim have both a long name and a short name. For instance `background` is the same as bg. For future readability, I strongly recommend using the long name.
 
-## Spaces & Tabs
+## Spaces & Tabs {#spaces}
 
 The incantations you must throw into your vimrc to get tabs/spaces working the way you want can be pretty confusing, so here's a quick refresher.
 
