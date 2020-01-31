@@ -62,7 +62,8 @@ The first is `zle-line-init`. Per the zsh documentation:
 
 The second is `zle-keymap-select`. Per the zsh documentation:
 
-<pre><code>Executed every time the keymap changes, i.e. the special parameter KEYMAP is set to a different value, while the line editor is active. Initialising the keymap when the line editor starts does not cause the widget to be called. 
+<pre><code>Executed every time the keymap changes, i.e. the special parameter KEYMAP is set to a different value, while the line editor is active. 
+Initialising the keymap when the line editor starts does not cause the widget to be called. 
 This can be used for detecting switches between the vi command (vicmd) and insert (usually main) keymaps.
 
 </code></pre>
