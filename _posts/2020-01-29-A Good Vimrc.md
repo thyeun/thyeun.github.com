@@ -28,8 +28,8 @@ I will break it up into logical sections.
 + [UI Config](#ui)
 + [Searching](#search)
 + [Folding](#fold)
-+ Custom Movements
-+ Custom Leader
++ [Custom Movements](#move)
++ [Custom Leader](#lead)
 + CtrlP Settings
 + Launch Config
 + Tmux Config
