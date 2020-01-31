@@ -49,3 +49,143 @@ By default, there is a 0.4 second delay after you hit the `<ESC>` key and when t
 <pre><code>
 export KEYTIMEOUT=1
 </code></pre>
+
+This can result in issues with other terminal commands that depended on this delay. If you have issues try raising the delay.
+
+## Visual Indication
+
+This is the second and far more frustrating problem. If you can't definitely tell which mode you're in, you feel much less confident when moving around Vi mode. To fix this problem, we need to take advantage of a few special features of `zle`.
+
+`zle` provides an interface for extension and customization through widgets. In addition to being able to define your own widgets, `zle` comes with quite a few handy built-in widgets that we can hijack to accomplish what we want.
+
+The first is `zle-line-init`. Per the zsh documentation:
+
+<pre><code>
+Executed every time the line editor is started to read a new line of input.
+</code></pre>
+
+The second is `zle-keymap-select`. Per the zsh documentation:
+
+<pre><code>
+Executed every time the keymap changes, i.e. the special parameter KEYMAP is set to a different value, while the line editor is active. Initialising the keymap when the line editor starts does not cause the widget to be called. This can be used for detecting switches between the vi command (vicmd) and insert (usually main) keymaps.
+</code></pre>
+
+Sounds perfect, if we can modify the code run during these two events, we have found the hooks we need to modify our prompt depending on which mode we're in!
+
+The syntax for adding custom a function to a `zle` widget looks like this:
+
+<pre><code>
+something() {
+    zle backward-word
+}
+zle -N something
+</code></pre>
+
+This has just added a brand new widget to zsh that executes `something()` when called. But this widget won't ever get run, since the `something()` widget doesn't get called by default. Using the widgets from above, we can rewrite the prompt every time we leave or enter the different Vim modes.
+
+## Color Prompt Function
+
+Currently, my prompt looks something like this:
+
+<pre><code>
+[~/code]:                                  [master]
+</code></pre>
+
+The current directory is on the left and my current git branch is on the right. I want to add a `[NORMAL]` status message to the right prompt when I'm in command mode for vim so that it looks like this:
+
+<pre><code>
+[~/code]:                         [NORMAL] [master]
+</code></pre>
+
+So let's take a look at our actual function that updates my prompt. I'll present it in full here first, and then step through it slowly and explain more.
+
+<pre><code>
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(git_custom_status) $EPS1"
+    zle reset-prompt
+}
+</code></pre>
+
+Let's look at the `VIM_PROMPT` variable. If you've never messed with zsh colors, take note that the `%{fg_bold[yellow]%}` snippet sets the text color of everything that comes after it to yellow. So, the `[% NORMAL]%` bit outputs `[NORMAL]` in yellow. The % symbols are used to escape the brackets. Finally, we'll have to end with `%{$reset_color%}` to stop outputting yellow.
+
+Next, we have to put this snippet in the right prompt depending on the current vim mode. To understand the next line, you'll need to know about zsh parameter expansion. Basically, it's just `${VARIABLE/PATTERN/REPLACEMENT}`. If the `VARIABLE` matches the `PATTERN`, replace it with `REPLACEMENT`. The line we're looking at is this:
+
+<pre><code>
+RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
+</code></pre>
+
+In this case, we use a double parameter expansion. The first replaces the expansion of `KEYMAP` (the current vim mode) with our yellow `[NORMAL]` prompt if KEYMAP is currently set to `vimcmd` (command mode). But, what if `KEYMAP` isn't set to vicmd? Then the `KEYMAP` expansion won't be set to `$VIM_PROMPT`, in which case it will be either `main` or `viins`. The last half of the expansion replaces either of those strings with nothing, so we don't add the yellow `[NORMAL]` string to our prompt. Perfect.
+
+Finally, we run:
+
+<pre><code>
+zle reset-prompt
+</code></pre>
+
+To redraw the current prompt.
+
+## Attach The Widgets
+
+We have a working function, but how do we register with `zle`? You'll notice our function is named `zle-line-init` and `zle-keymap-select`. As previously discussed, these are also the names of two important widgets that get triggered when moving between Vim modes. So, to make our new widget respond to the correct Vim mode we have to add these widgets to the zle module. This is easy, the lines are:
+
+<pre><code>
+zle -N zle-line-init
+zle -N zle-keymap-select
+</code></pre>
+
+## Common Key Bindings
+
+As awesome as vim mode is, you might still miss some bindings that are standard in most shells. For example, `<Ctrl-P>` to cycle backwards through previous commands. As you might assume, `zle` lets you create custom bindings too. Here are a few that I've found useful.
+
+<pre><code>
+# Use vim cli mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# backspace and ^h working even after
+# returning from command mode
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+
+# ctrl-w removed word backwards
+bindkey '^w' backward-kill-word
+
+# ctrl-r starts searching history backward
+bindkey '^r' history-incremental-search-backward
+</code></pre>
+
+## Full Snippet
+
+Here's the full snippet:
+
+<pre><code>
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+export KEYTIMEOUT=1
+</code></pre>
+
+This goes in your `.zshrc` file.
+
+## Wrapping It Up
+
+That's pretty much it. You should now have a more informative, prettier prompt and know a little more about how `zle` works!
+
+Update: From the short discussion of this article on [lobsters](https://lobste.rs/s/tfjs4k/adding_vi_to_your_zsh) I was tipped off to the existence of [opp.zsh](https://github.com/hchbaw/opp.zsh), a wonderful plugin for zsh that makes vi mode even better! This enables text objects—a wonderful magical feature added in Vim. Text object support lets you run commands like `ciw` (for change inner word) that make line editing even simpler. I highly recommend checking out opp.zsh for an even better vi-mode in zsh.
+
+Questions? [@thyeun](https://twitter.com/thyeun)
