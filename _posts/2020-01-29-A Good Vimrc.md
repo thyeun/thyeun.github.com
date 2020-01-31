@@ -35,7 +35,7 @@ I will break it up into logical sections.
 + [Tmux Config](#tmux)
 + [Autogroups](#auto)
 + [Backups](#backup)
-+ [Custom Functions](#funct)
++ [Custom Functions](#func)
 + [Organization](#organ)
 + [Wrapping It Up](#wrap)
 
@@ -307,7 +307,7 @@ augroup END
 
 This is a slew of commands that create language-specific settings for certain filetypes/file extensions. It is important to note they are wrapped in an `augroup` as this ensures the `autocmd`'s are only applied once. In addition, the `autocmd!` directive clears all the `autocmd`'s for the current group.
 
-## Backups {backup}
+## Backups {#backup}
 
 If you leave a Vim process open in which you've changed file, Vim creates a "backup" file. Then, when you open the file from a different Vim session, Vim knows to complain at you for trying to edit a file that is already being edited. The "backup" file is created by appending a ~ to the end of the file in the current directory. This can get quite annoying when browsing around a directory, so I applied the following settings to move backups to the /tmp folder.
 
@@ -401,7 +401,7 @@ set number "This will be folded
 
 That's it. I find this a great way to keep your vimrc highly structured, easy to navigate, and incredibly readable.
 
-## Wrapping It Up {#warp}
+## Wrapping It Up {#wrap}
 
 I hope this helped you. The reality is that this was a ton of stuff and I still stand by this platitude:
 
