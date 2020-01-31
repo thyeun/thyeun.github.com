@@ -129,16 +129,16 @@ To redraw the current prompt.
 
 We have a working function, but how do we register with `zle`? You'll notice our function is named `zle-line-init` and `zle-keymap-select`. As previously discussed, these are also the names of two important widgets that get triggered when moving between Vim modes. So, to make our new widget respond to the correct Vim mode we have to add these widgets to the zle module. This is easy, the lines are:
 
-<pre><code>
+<code>
 zle -N zle-line-init
 zle -N zle-keymap-select
-</code></pre>
+</code>
 
 ## Common Key Bindings
 
 As awesome as vim mode is, you might still miss some bindings that are standard in most shells. For example, `<Ctrl-P>` to cycle backwards through previous commands. As you might assume, `zle` lets you create custom bindings too. Here are a few that I've found useful.
 
-<pre><code>
+<code>
 # Use vim cli mode
 bindkey '^P' up-history
 bindkey '^N' down-history
@@ -153,13 +153,13 @@ bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
-</code></pre>
+</code>
 
 ## Full Snippet
 
 Here's the full snippet:
 
-<pre><code>
+<code>
 bindkey -v
 
 bindkey '^P' up-history
@@ -178,7 +178,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 export KEYTIMEOUT=1
-</code></pre>
+</code>
 
 This goes in your `.zshrc` file.
 
