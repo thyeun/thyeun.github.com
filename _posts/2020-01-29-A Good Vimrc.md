@@ -117,7 +117,7 @@ Vim loves to redraw the screen during things it probably doesn't need to—like 
 
 With `showmatch`, when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well.
 
-## Searching
+## Searching {#search}
 
 I love Vim's search. I love it even more with the following settings.
 
@@ -133,7 +133,7 @@ nnoremap < leader >< space > :nohlsearch< CR >
 
 Vim will keep highlighted matches from searches until you either run a new one or manually stop highlighting the old search with `:nohlsearch`. I find myself running this all the time so I've mapped it to `,<space>`.
 
-## Folding
+## Folding {#fold}
 
 Vim folding is a pretty sweet feature that I don't make heavy use of, but when I want it, I want it to have reasonable settings.
 
@@ -149,3 +149,52 @@ Shows all folds.
 
 <pre><code>set foldnestmax=10      " 10 nested fold max
 </code></pre>
+
+Folds can be nested. Setting a max on the number of folds guards against too many folds. If you need more than 10 fold levels you must be writing some Javascript burning in callback-hell and I feel very bad for you.
+
+<pre><code>" space open/closes folds
+nnoremap < space > za
+</code></pre>
+
+I change the mapping of `<space>` pretty frequently, but this is its current command. `za` opens/closes the fold around the current block. As an interesting aside, I've heard the `z` character is used to represent folding in Vim because it looks like a folded piece of paper. Probably not, but it makes a nice story. `:)`
+
+<pre><code>set foldmethod=indent   " fold based on indent level
+</code></pre>
+
+This tells Vim to fold based on indentation. This is especially useful for me since I spend my days in Python. Other acceptable values are `marker`, `manual`, `expr`, `syntax`, `diff`. Run `:help foldmethod` to find out what each of those do.
+
+## Movement [#move]
+
+Here we start getting into custom bindings. This group of bindings all relate to movement commands.
+
+<pre><code>" move vertically by visual line
+nnoremap j gj
+nnoremap k gk
+</code></pre>
+
+These two allow us to move around lines visually. So if there's a very long line that gets visually wrapped to two lines, `j` won't skip over the "fake" part of the visual line in favor of the next "real" line.
+
+<pre><code>" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" $/^ doesn't do anything
+nnoremap $ < nop >
+nnoremap ^ < nop >
+</code></pre>
+
+These feel like my most controversial bindings, since they overwrite existing movement bindings. My thinking was that hitting `^` and `$` to jump to the beginning and end of a line was a little too uncomfortable for such an oft-used movement. So I rebound E and B, which are typically used to move forwards and backwards over visual words to these purposes. Next I bound the old way to `<nop>` to train myself to use the new ones.
+
+<pre><code>" highlight last inserted text
+nnoremap gV `[v`]
+</code></pre>
+
+This one is pretty cool. It visually selects the block of characters you added last time you were in `INSERT` mode.
+
+## Leader Shortcuts {#lead}
+
+Here we've reached the meat of my custom keybindings. This section will introduce many different plugins and custom functions that I use pretty frequently. Let's get started.
+
+<pre><code>let mapleader=","       " leader is comma
+</code></pre>
+
