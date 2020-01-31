@@ -24,7 +24,7 @@ With that said, the rest of this article will be me explaining each and every li
 I will break it up into logical sections.
 
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#colors">Colors</a></li>
-<li><a href="http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces">Spaces And Tabs</a></li>
+<li><a href="https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces">Spaces And Tabs</a></li>
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#ui">UI Config</a></li>
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#search">Searching</a></li>
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#fold">Folding</a></li>
@@ -39,11 +39,11 @@ I will break it up into logical sections.
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#organization">Organization</a></li>
 <li><a href="https://dougblack.io/words/a-good-vimrc.html#wrap">Wrapping It Up</a></li>
 
-+ [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
-+ [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#tabs)
-+ [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#config)
-+ [Searching](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
-+ [Folding](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
++ [Colors](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
++ [Spaces And Tabs](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces)
++ [UI Config](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#ui)
++ [Searching](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
++ [Folding](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
 + Custom Movements
 + Custom Leader
 + CtrlP Settings
