@@ -23,11 +23,11 @@ With that said, the rest of this article will be me explaining each and every li
 
 I will break it up into logical sections.
 
-+ [Colors](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
++ [Colors](#colors)
 + [Spaces And Tabs](#spaces)
-+ [UI Config](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#ui)
-+ [Searching](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
-+ [Folding](https://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
++ [UI Config](#ui)
++ [Searching](#search)
++ [Folding](#fold)
 + Custom Movements
 + Custom Leader
 + CtrlP Settings
@@ -41,7 +41,7 @@ I will break it up into logical sections.
 
 This article will almost certainly fall out of date with my vimrc in the very near future. You can find the most up to date version of it on [github](https://github.com/thyeun/dotfiles/blob/master/.vimrc).
 
-## Colors
+## Colors {#colors}
 
 <pre><code>colorscheme badwolf         " awesome colorscheme
 </code></pre>
@@ -78,7 +78,7 @@ The incantations you must throw into your vimrc to get tabs/spaces working the w
 
 Taken together, these are great options for editing files in languages that prefer spaces over tabs, since this ensures no `<TAB>`s are actually used. I spend most of my day in python and bash, where spaces are the norm. I like it, since it means my source code looks the same on every machine.
 
-## UI Config
+## UI Config {#ui}
 
 These are options that change random visuals in Vim.
 
