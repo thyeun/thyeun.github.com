@@ -24,8 +24,8 @@ With that said, the rest of this article will be me explaining each and every li
 I will break it up into logical sections.
 
 + [Colors](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#colors)
-+ [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#spaces_&_tabs)
-+ [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#ui_config)
++ [Spaces And Tabs](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#tabs)
++ [UI Config](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#config)
 + [Searching](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#searching)
 + [Folding](http://thyeun.github.io/2020/01/29/A-Good-Vimrc.html#folding)
 + Custom Movements
@@ -145,3 +145,7 @@ Shows all folds.
 <pre><code>set foldlevelstart=10   " open most folds by default
 </code></pre>
 
+`foldlevelstart` is the starting fold level for opening a new buffer. If it is set to 0, all folds will be closed. Setting it to 99 would guarantee folds are always open. So, setting it to 10 here ensures that only very nested blocks of code are folded when opening a buffer.
+
+<pre><code>set foldnestmax=10      " 10 nested fold max
+</code></pre>
