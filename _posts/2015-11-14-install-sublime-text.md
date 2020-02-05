@@ -67,16 +67,13 @@ Extensions or themes in SublimeText are easy to install, Package Control install
 
   8. A message will appear the below information.
 
-        <pre><code>If installing manually (not through Package Control), add the following to your Settings - User file and restart Sublime Text after:
-{
-   "theme": "Material-Theme.sublime-theme",
-   "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
-}</code></pre>
+<pre><code>If installing manually (not through Package Control), add the following to your Settings - User file and restart Sublime Text after:
+"theme": "Material-Theme.sublime-theme",
+ "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
+</code></pre>
   The document says, follow the above information, but only if you installed it manually, so this also applies installed using the Package Control does not automatically apply to manually. Copy the code within the  bracket. 
-        
-        <pre><code>"theme": "Material-Theme.sublime-theme",
+<pre><code>"theme": "Material-Theme.sublime-theme",
 "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",</code></pre>
-
   9. Go to `Preferences` in the menu, open the setting windows `Settings - User`.
    <img src="/images/2015-11-14/sublime-user.png" style="margin: 0 auto; width: 410px;">
    <img src="/images/2015-11-14/sublime-pref.png" style="margin: 0 auto; width: 752px;">
@@ -85,16 +82,12 @@ Extensions or themes in SublimeText are easy to install, Package Control install
   <img src="/images/2015-11-14/sublime-apply.png" style="margin: 0 auto; width: 752px;">
   Before,
 
-      <pre><code>"ignored_packages":
-[
-  "Vintage"
-]</code></pre>
+<pre><code>"ignored_packages":
+["Vintage"]</code></pre>
   After,
 
-      <pre><code>"ignored_packages":
-[
-  "Vintage"
-],
+<pre><code>"ignored_packages":
+["Vintage"],
 "theme": "Material-Theme.sublime-theme",
 "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme"</code></pre>
 
@@ -109,7 +102,7 @@ Extensions or themes in SublimeText are easy to install, Package Control install
 
   2. Scroll down inside **Theme styles** and copy the code below.
 
-        <pre><code>"theme": "Material-Theme-Lighter.sublime-theme",
+<pre><code>"theme": "Material-Theme-Lighter.sublime-theme",
 "color_scheme": "Packages/Material Theme/schemes/Material-Theme-Lighter.tmTheme",</code></pre>
 
   3. Go to `Preferences` and choose `Settings - User`.
@@ -117,17 +110,13 @@ Extensions or themes in SublimeText are easy to install, Package Control install
 
   4. Replace the code for Material Theme.  
 
-        <h5>Original code of Material Theme</h5>
-
-        <pre><code>"theme": "Material-Theme.sublime-theme",
+  <h5>Original code of Material Theme</h5>
+  <pre><code>"theme": "Material-Theme.sublime-theme",
 "color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",</code></pre>
-
-        <h5>Code for Material Theme Lighter</h5>
-
-        <pre><code>"theme": "Material-Theme-Lighter.sublime-theme",
+  <h5>Code for Material Theme Lighter</h5>
+  <pre><code>"theme": "Material-Theme-Lighter.sublime-theme",
 "color_scheme": "Packages/Material Theme/schemes/Material-Theme-Lighter.tmTheme",</code></pre>
-
-        Comparing the two code Lighter theme can be seen that the addition of a named Lighter in the default theme code.
+   Comparing the two code Lighter theme can be seen that the addition of a named Lighter in the default theme code.
 
   5. Pressing `Ctrl + s` to save it, Material Theme Lighter will appear like the image below.
     <img src="/images/2015-11-14/sublime-lighter.png" style="margin: 0 auto; width: 752px;">
@@ -136,13 +125,13 @@ Extensions or themes in SublimeText are easy to install, Package Control install
 
   7. Copy the code and paste in `Preferences.sublime-settings` the document you opened above.
 
-        <pre><code>"overlay_scroll_bars": "enabled",
+<pre><code>"overlay_scroll_bars": "enabled",
 "line_padding_top": 3,
 "line_padding_bottom": 3,
 "always_show_minimap_viewport": true,
 "bold_folder_labels": true,
-"indent_guide_options": [ "draw_normal", "draw_active" ],   // Highlight active indent
-"font_options": [ "gray_antialias" ],                      // On retina Mac</code></pre>
+"indent_guide_options": [ "draw_normal", "draw_active" ], // Highlight active indent
+"font_options": [ "gray_antialias" ], // On retina Mac</code></pre>
 
   8. Similar by pressing `Ctrl + s`, will change the style of the theme.
     <img src="/images/2015-11-14/sublime-ui.png" style="margin: 0 auto; width: 752px;">
