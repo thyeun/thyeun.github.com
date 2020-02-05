@@ -80,10 +80,12 @@ Extensions or themes in SublimeText are easy to install, Package Control install
 
   10. Copy the two line of the extra code and paste it after line 8, dont even paste the code inside `{``}`. Save it by pressing `Ctrl + s`.
   <img src="/images/2015-11-14/sublime-apply.png" style="margin: 0 auto; width: 752px;">
+  
   Before,
 
 <pre><code>"ignored_packages":
 ["Vintage"]</code></pre>
+  
   After,
 
 <pre><code>"ignored_packages":
