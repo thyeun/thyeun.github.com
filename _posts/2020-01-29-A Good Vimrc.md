@@ -128,7 +128,7 @@ set hlsearch            " highlight matches
 These should be pretty self explanatory. They make searching better.
 
 <pre><code>" turn off search highlight
-nnoremap < leader >< space > :nohlsearch< CR >
+nnoremap &lt;leader&gt;&lt;space&gt; :nohlsearch< CR >
 </code></pre>
 
 Vim will keep highlighted matches from searches until you either run a new one or manually stop highlighting the old search with `:nohlsearch`. I find myself running this all the time so I've mapped it to `,<space>`.
@@ -153,7 +153,7 @@ Shows all folds.
 Folds can be nested. Setting a max on the number of folds guards against too many folds. If you need more than 10 fold levels you must be writing some Javascript burning in callback-hell and I feel very bad for you.
 
 <pre><code>" space open/closes folds
-nnoremap < space > za
+nnoremap &lt;space&gt; za
 </code></pre>
 
 I change the mapping of `<space>` pretty frequently, but this is its current command. `za` opens/closes the fold around the current block. As an interesting aside, I've heard the `z` character is used to represent folding in Vim because it looks like a folded piece of paper. Probably not, but it makes a nice story. `:)`
@@ -179,8 +179,8 @@ nnoremap B ^
 nnoremap E $
 
 " $/^ doesn't do anything
-nnoremap $ < nop >
-nnoremap ^ < nop >
+nnoremap $ &lt;nop&gt;
+nnoremap ^ &lt;nop&gt;
 </code></pre>
 
 These feel like my most controversial bindings, since they overwrite existing movement bindings. My thinking was that hitting `^` and `$` to jump to the beginning and end of a line was a little too uncomfortable for such an oft-used movement. So I rebound E and B, which are typically used to move forwards and backwards over visual words to these purposes. Next I bound the old way to `<nop>` to train myself to use the new ones.
@@ -201,33 +201,33 @@ Here we've reached the meat of my custom keybindings. This section will introduc
 `\` is a little far away for a leader. I've found `,` to be a much better replacement.
 
 <pre><code>" jk is escape
-inoremap jk < esc >
+inoremap jk &lt;esc&gt;
 </code></pre>
 
 `<ESC>` is very far away. `jk` is a much better replacement as it's on the home row and I actually never type it when writing text. Except right now when I wrote this section of this post. Which I'm writing in Vim. The workaround if you ever need to enter this rare sequence of keys is to enter the `j`, wait for the leader-check timeout to fade, and then enter the `k`.
 
 <pre><code>" toggle gundo
-nnoremap < leader >u :GundoToggle< CR >
+nnoremap &lt;leader&gt; u :GundoToggle &lt;CR&gt;
 </code></pre>
 
 In one of its cleverest innovations, Vim doesn't model undo as a simple stack. In Vim it's a tree. This makes sure you never lose an action in Vim, but also makes it much more difficult to traverse around that tree. [gundo.vim](https://github.com/sjl/gundo.vim) fixes this by displaying that undo tree in graphical form. Get it and don't look back. Here I've mapped it to `,u`, which I like to think of as "super undo".
 
 <pre><code>" edit vimrc/zshrc and load vimrc bindings
-nnoremap < leader >ev :vsp $MYVIMRC< CR >
-nnoremap < leader >ez :vsp ~/.zshrc< CR >
-nnoremap < leader >sv :source $MYVIMRC< CR >
+nnoremap &lt;leader&gt;ev :vsp $MYVIMRC&lt;CR&gt;
+nnoremap &lt;leader&gt;ez :vsp ~/.zshrc&lt;CR&gt;
+nnoremap &lt;leader&gt;sv :source $MYVIMRC&lt;CR&gt;
 </code></pre>
 
 These are shortcuts to edit and source my vimrc and my zshrc. That's it.
 
 <pre><code>" save session
-nnoremap < leader >s :mksession< CR >
+nnoremap &lt;leader&gt;s :mksession&lt;CR&gt;
 </code></pre>
 
 Ever wanted to save a given assortment of windows so that they're there next time you open up Vim? `:mksession` does just that! After saving a Vim session, you can reopen it with `vim -S`. Here I've mapped it to `,s`, which I remember by thinking of it as "super save".
 
 <pre><code>" open ag.vim
-nnoremap < leader >a :Ag
+nnoremap &lt;leader&gt;a :Ag
 </code></pre>
 
 [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) is a fantastic command line tool to search source code in a project. It's wicked fast. The command line tool is named `ag` (like the element silver). Thankfully there is a wonderful Vim plugin [ag.vim](https://github.com/rking/ag.vim) which lets you use `ag` without leaving Vim and pulls the results into a quickfix window for easily jumping to the matches. Here I've mapped it to `,a`.
@@ -266,11 +266,11 @@ The `pathogen` options extract all of the Vim plugins from their location in `~/
 
 <pre><code>" allows cursor change in tmux mode
 if exists('$TMUX')
-    let &t_SI = "\< Esc >Ptmux;\< Esc >\< Esc >]50;CursorShape=1\x7\< Esc >\\"
-    let &t_EI = "\< Esc >Ptmux;\< Esc >\< Esc >]50;CursorShape=0\x7\< Esc >\\"
+    let &t_SI = "\&lt;Esc&gt;Ptmux;\&lt;Esc&gt;\&lt;Esc&gt;]50;CursorShape=1\x7\&lt;Esc&gt;\\"
+    let &t_EI = "\&lt;Esc&gt;Ptmux;\&lt;Esc&gt;\&lt;Esc&gt;]50;CursorShape=0\x7\&lt;Esc&gt;\\"
 else
-    let &t_SI = "\< Esc >]50;CursorShape=1\x7"
-    let &t_EI = "\< Esc >]50;CursorShape=0\x7"
+    let &t_SI = "\&lt;Esc&gt;]50;CursorShape=1\x7"
+    let &t_EI = "\&lt;Esc&gt;]50;CursorShape=0\x7"
 endif
 </code></pre>
 
@@ -282,7 +282,7 @@ These lines change the cursor from block cursor mode to vertical bar cursor mode
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
     autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md
-                \:call < SID >StripTrailingWhitespaces()
+                \:call &lt;SID&gt;StripTrailingWhitespaces()
     autocmd FileType java setlocal noexpandtab
     autocmd FileType java setlocal list
     autocmd FileType java setlocal listchars=tab:+\ ,eol:-
@@ -336,7 +336,7 @@ endfunc
 
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
-function! < SID >StripTrailingWhitespaces()
+function! &lt;SID&gt;StripTrailingWhitespaces()
     " save last search & cursor position
     let _s=@/
     let l = line(".")
