@@ -29,7 +29,8 @@ To make your own profile module for polybar, you need to install mugshot.
 **Arch Linux**
 
 <pre><code>pacman -S mugshot
-</pre></code>
+</pre>
+</code>
 
 Than open up your polybar config file `~/.config/polybar/config`, look for the line below
 
@@ -56,5 +57,5 @@ And change the unicode as you like on line `exec = echo "  "`.
 
 You will the result once you left click as below
 
-<img src="images/2020-02-07/profile.png" style="margin: 0 auto; width: 688px;" />
+<img src="/images/2020-02-07/profile.png" style="margin: 0 auto; width: 688px;" />
 
