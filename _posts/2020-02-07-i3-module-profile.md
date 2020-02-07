@@ -27,11 +27,15 @@ You can configuration your polybar with extra module, such as *xwindows*, *xwork
 To make your own profile module for polybar, you need to install mugshot.
 
 **Arch Linux**
-<pre><code>pacman -S mugshot</pre></code>
+
+<pre><code>pacman -S mugshot
+</pre></code>
 
 Than open up your polybar config file `~/.config/polybar/config`, look for the line below
 
-<pre><code>modules-right =  arch-aur-updates mail cpu memory date profile</pre></code>
+<pre><code>modules-right =  arch-aur-updates mail cpu memory date profile
+</pre>
+</code>
 
 And add-in the `profile` module name.
 
