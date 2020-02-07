@@ -28,15 +28,11 @@ To make your own profile module for polybar, you need to install mugshot.
 
 **Arch Linux**
 
-<pre><code>pacman -S mugshot
-</pre>
-</code>
+<pre><code>pacman -S mugshot</pre></code>
 
 Than open up your polybar config file `~/.config/polybar/config`, look for the line below
 
-<pre><code>modules-right =  arch-aur-updates mail cpu memory date profile
-</pre>
-</code>
+<pre><code>modules-right =  arch-aur-updates mail cpu memory date profile</pre></code>
 
 And add-in the `profile` module name.
 
@@ -49,8 +45,7 @@ interval = 1
 click-left = exec mugshot
 format-foreground = ${colors.black}
 format-background = ${colors.blue}
-format-underline = ${colors.blue1} 
-</pre>
+format-underline = ${colors.blue1}</pre>
 </code>
 
 And change the unicode as you like on line `exec = echo "  "`.
