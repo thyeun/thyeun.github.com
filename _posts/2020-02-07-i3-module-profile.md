@@ -3,7 +3,7 @@ layout: entry
 title: Polybar Profile module
 author: Thomas Yeun
 author-email: thyeun@gmail.com
-description: i3 
+description: i3
 publish: true
 ---
 
@@ -12,7 +12,7 @@ publish: true
 
 *i3* is a tiling window manager designed for [X11](https://en.wikipedia.org/wiki/X_Window_System), inspired by [wmii](https://en.wikipedia.org/wiki/Tiling_window_manager#X-tile-anchor), and written in [C](https://en.wikipedia.org/wiki/C_(programming_language)). It supports tiling, stacking, and tabbing layouts, which it handles dynamically. Configuration is achieved via plain text file and extending i3 is possible using its [Unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket) and [JSON](https://en.wikipedia.org/wiki/JSON) based [IPC](https://en.wikipedia.org/wiki/Inter-process_communication) interface from many programming languages.
 
-Like [wmii](https://en.wikipedia.org/wiki/Tiling_window_manager#X-tile-anchor), i3 uses a control system very similar to [vi](https://en.wikipedia.org/wiki/Vi). By default, window focus is controlled by the `'Mod1'` (Alt key/Win key) plus the right hand home row keys (`Mod1+J,K,L,;`), while window movement is controlled by the addition of the Shift key (`Mod1+Shift+J,K,L,;`). 
+Like [wmii](https://en.wikipedia.org/wiki/Tiling_window_manager#X-tile-anchor), i3 uses a control system very similar to [vi](https://en.wikipedia.org/wiki/Vi). By default, window focus is controlled by the `'Mod1'` (Alt key/Win key) plus the right hand home row keys (`Mod1+J,K,L,;`), while window movement is controlled by the addition of the Shift key (`Mod1+Shift+J,K,L,;`).
 
 ## Polybar
 
