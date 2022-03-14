@@ -8,7 +8,7 @@ kramdown:
   input: GFM
   hard_wrap: false
 
-home_url: "http://thyeun.github.io"
+home_url: "http://thyeun.com"
 representing_image: "/images/og-logo.png"
 
 sass:
